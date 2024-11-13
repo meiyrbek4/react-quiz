@@ -2,23 +2,18 @@ import { useQuiz } from "../contexts/QuizContext";
 
 export default function NextButton() {
   const { dispatch, index, numQuestions } = useQuiz();
-  if (index < numQuestions - 1)
-    return (
-      <button
-        className="btn btn-ui"
-        onClick={() => dispatch({ type: "nextAnswer" })}
-      >
-        Next
-      </button>
-    ) as React.JSX.Element;
 
-  if (index === numQuestions - 1)
-    return (
-      <button
-        className="btn btn-ui"
-        onClick={() => dispatch({ type: "finished" })}
-      >
-        Finish
-      </button>
-    ) as React.JSX.Element;
+  function handleDispatch() {
+    if (index < numQuestions - 1) {
+      return dispatch({ type: "nextAnswer" });
+    } else if (index === numQuestions - 1) {
+      return dispatch({ type: "finished" });
+    }
+  }
+
+  return (
+    <button className="btn btn-ui" onClick={() => handleDispatch()}>
+      Next
+    </button>
+  );
 }
