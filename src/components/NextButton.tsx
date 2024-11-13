@@ -10,7 +10,7 @@ export default function NextButton() {
       >
         Next
       </button>
-    );
+    ) as React.JSX.Element;
 
   if (index === numQuestions - 1)
     return (
@@ -20,5 +20,5 @@ export default function NextButton() {
       >
         Finish
       </button>
-    );
+    ) as React.JSX.Element;
 }
